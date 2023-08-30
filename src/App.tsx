@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { axiosInstance } from './api';
 import Container from './components/Container';
+import { BaseLayout } from './components/Layout';
 import GlobalStyle from './styles/global';
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Container>hi</Container>
+      <BaseLayout>
+        <Container>hi</Container>
+      </BaseLayout>
     </>
   );
 }
