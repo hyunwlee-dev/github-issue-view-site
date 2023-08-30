@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { axiosInstance } from './api';
+import Container from './components/Container';
 import GlobalStyle from './styles/global';
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      hi
+      <Container>hi</Container>
     </>
   );
 }
