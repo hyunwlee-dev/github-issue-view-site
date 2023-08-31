@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { IssueItem } from '../../components/IssueItem';
 import { Loading } from '../../components/Loading';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
@@ -16,14 +17,15 @@ export const GithubIssueListContainer = () => {
     <>
       <S.IssueList>
         {issueList?.map(({ id, number, title, user, created_at, comments }: Issue) => (
-          <IssueItem
-            key={id}
-            number={number}
-            title={title}
-            login={user?.login}
-            created_at={created_at}
-            comments={comments}
-          />
+          <Link to={`/issue/${number}`} key={id}>
+            <IssueItem
+              number={number}
+              title={title}
+              login={user?.login}
+              created_at={created_at}
+              comments={comments}
+            />
+          </Link>
         ))}
       </S.IssueList>
       {isLoading}
