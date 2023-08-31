@@ -1,17 +1,17 @@
-import React, { HTMLAttributes, ReactNode } from 'react';
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Container from '../Container';
 import * as S from './BaseLayout.style';
 
-interface IProps extends HTMLAttributes<HTMLDivElement> {
-  children?: ReactNode;
-}
-
-export const BaseLayout: React.FC<IProps> = ({ children }) => {
+export const BaseLayout = () => {
   return (
     <>
       <S.Header>
         <h1>github issue list {/* need to convert heading by url */}</h1>
       </S.Header>
-      <main>{children}</main>
+      <main>
+        <Container>{<Outlet />}</Container>
+      </main>
     </>
   );
 };

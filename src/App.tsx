@@ -1,18 +1,13 @@
 import React from 'react';
-import Container from './components/Container';
-import { BaseLayout } from './components/Layout';
-import { GithubIssueListContainer } from './containers';
+import { RouterProvider } from 'react-router-dom';
+import router from './router';
 import GlobalStyle from './styles/global';
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <BaseLayout>
-        <Container>
-          <GithubIssueListContainer />
-        </Container>
-      </BaseLayout>
+      <RouterProvider router={router} />
     </>
   );
 }
