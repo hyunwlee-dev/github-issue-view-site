@@ -7,7 +7,7 @@ export const BaseLayout = () => {
   return (
     <>
       <S.Header>
-        <h1>github issue list {/* need to convert heading by url */}</h1>
+        <h1>github issue</h1>
       </S.Header>
       <main>
         <Container>{<Outlet />}</Container>
