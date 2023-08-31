@@ -13,6 +13,12 @@ const GlobalStyle = createGlobalStyle`
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
   }
 
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
   a {
     text-decoration: none;
     color: inherit;
