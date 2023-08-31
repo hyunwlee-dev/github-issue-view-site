@@ -8,14 +8,15 @@ export const useIssueList = () => {
   const [issueList, setIssueList] = useState<Issue[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error>();
+  const [page, setPage] = useState<number>(1);
   const getIssueList = useCallback(async () => {
     setIsLoading(true);
     try {
       const response = await axiosInstance.get(
-        `/repos/${OWNER}/${REPO}/issues?state=open&sort=comments&page=1&per_page=10`,
+        `/repos/${OWNER}/${REPO}/issues?state=open&sort=comments&page=${page}&per_page=10`,
       );
-      setIssueList(response.data);
-      return response.data;
+      if (issueList.length === 0) setIssueList(response.data);
+      else setIssueList(prev => [...prev, ...response.data]);
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error(error.response?.data.message);
@@ -24,10 +25,12 @@ export const useIssueList = () => {
     } finally {
       setIsLoading(false);
     }
+  }, [issueList, page]);
+  const refetch = useCallback(() => {
+    setPage(prev => prev + 1);
   }, []);
-
   useEffect(() => {
     getIssueList();
-  }, []);
-  return { issueList, isLoading, error };
+  }, [page]);
+  return { issueList, isLoading, error, refetch, page };
 };
